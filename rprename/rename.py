@@ -4,6 +4,7 @@
 """This module provides the Renamer class to rename multiple files."""
 
 import time
+import datetime as dt
 from pathlib import Path
 
 from PyQt5.QtCore import QObject, pyqtSignal
@@ -18,11 +19,12 @@ class Renamer(QObject):
         super().__init__()
         self._files = files
         self._prefix = prefix
+        self.fecha = dt.datetime.now().strftime('%y%m%d%H%M')
 
     def renameFiles(self):
-        for fileNumber, file in enumerate(self._files, 1):
+        for fileNumber, file in enumerate(self._files):
             newFile = file.parent.joinpath(
-                f"{self._prefix}{str(fileNumber)}{file.suffix}"
+                f"{self.fecha}_{int(self._prefix) + fileNumber}{file.suffix}"
             )
             file.rename(newFile)
             time.sleep(0.1) # Comment this line to rename files faster.

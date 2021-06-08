@@ -12,17 +12,7 @@ from PyQt5.QtWidgets import QFileDialog, QWidget
 from .rename import Renamer
 from .ui.window import Ui_Window
 
-FILTERS = ";;".join(
-    (
-        "PDF Files (*.pdf)",
-        "PNG Files (*.png)",
-        "JPEG Files (*.jpeg)",
-        "JPG Files (*.jpg)",
-        "GIF Files (*.gif)",
-        "TXT Files (*.txt)",
-        "Python Files (*.py)"
-    )
-)
+FILTERS = "PDF Files (*.pdf)"
 
 class Window(QWidget, Ui_Window):
     def __init__(self):
