@@ -18,7 +18,10 @@ class Renamer(QObject):
     def __init__(self, files, prefix):
         super().__init__()
         self._files = files
-        self._prefix = prefix
+        try:
+            self._prefix = int(prefix)
+        except:
+            self._prefix = "0"
         self.fecha = dt.datetime.now().strftime('%y%m%d%H%M')
 
     def renameFiles(self):
